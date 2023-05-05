@@ -1,0 +1,10 @@
+site:
+  title: 'Toddys - Time Line'
+  description: 'Bem vindo a minha timeline pessoal!'
+personal:
+  name: 'Vinícius Gabriel'
+  avatar: 'https://www.github.com/Toddynn.png'
+  socialNetworks:
+    youtube: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygULZ2l2ZSB5b3UgdXA%3D'
+    github: 'https://www.github.com/Toddynn'
+    linkedin: 'https://www.linkedin.com/in/viniciusgabrieltodis'
