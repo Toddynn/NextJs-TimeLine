@@ -5,9 +5,15 @@ import Feed from "./patterns/Feed/Feed";
 import Footer from "./patterns/Footer/Footer";
 import Menu from "./patterns/Menu/Menu";
 import TemplatePageHOC from "@src/services/template/TemplatePageHOC";
+import type { iPost } from "@src/services/posts/PostsService";
+
+interface HomeScreenProps {
+  posts: iPost[]
+}
 
 export function HomeScreen(props: any) {
-  console.log(props)
+  console.log(props);
+
   const theme = useTheme();
 
   return (
@@ -23,6 +29,7 @@ export function HomeScreen(props: any) {
       <Menu />
       <Feed>
         <Feed.Header />
+        <Feed.Posts posts={props.posts}></Feed.Posts>
       </Feed>
       <Footer />
     </Box>

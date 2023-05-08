@@ -11,6 +11,8 @@ export default function Footer() {
         color: theme.colors.neutral.x000,
         width: '100%',
         height: '120px',
+        position: 'relative',
+        bottom:'0',
         paddingHorizontal: '24px',
         paddingVertical: '24px',
         alignItems: 'center',
@@ -19,7 +21,7 @@ export default function Footer() {
       }}
     >
       <Text variant="body2">
-        Feito com ❤️ por Mario Souto (DevSoutinho)
+        Toddys ❤️ Arthur 
       </Text>
     </Box>
   )

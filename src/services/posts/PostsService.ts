@@ -11,6 +11,7 @@ export interface iPost {
         resume: string;
         tags: string[];
     },
+    image?: string;
     title: string;
     content: string;
 }
@@ -26,20 +27,15 @@ export default function PostsService() {
 
                 const {data, content} = matter(postsFile);
 
-                const formatDate = () => {
-                    let datapost = String(data?.date).substring(0, 10);
-                    
-                    return format(new Date(datapost), 'dd/mm/yyyy');
-                }
-
                 const post: iPost = {
                     metaData:{
-                        date: formatDate(),
+                        date: new Date(data.date).toISOString(),
                         slug: item.replace('.md', ''),
                         url: data.url,
                         resume: data.resume,
                         tags: data.tags
                     },
+                    image: data.image || '',
                     title: data.title,
                     content,
                 }
