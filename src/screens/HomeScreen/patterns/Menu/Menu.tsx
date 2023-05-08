@@ -1,6 +1,7 @@
 import Box from "@src/components/Box/Box";
 import Button from "@src/components/Button/Button";
 import Icon from "@src/components/Icon/Icon";
+import Image from "@src/components/Image/Image";
 import Text from "@src/components/Text/Text";
 import theme from "@src/theme/theme";
 import { useTheme } from "@src/theme/ThemeProvider";
@@ -25,7 +26,6 @@ export default function Menu() {
         styleSheet={{
           width: baseSize,
           height: baseSize,
-          backgroundColor: theme.colors.primary.x500,
           borderRadius: '100%',
           alignItems: 'center',
           justifyContent: 'center',
@@ -37,9 +37,7 @@ export default function Menu() {
           },
         }}
       >
-        <Text>
-          TS
-        </Text>
+        <img src="https://github.com/Toddynn.png" width={40} alt="oi" />
       </Button.Base>
 
       <Button.Base

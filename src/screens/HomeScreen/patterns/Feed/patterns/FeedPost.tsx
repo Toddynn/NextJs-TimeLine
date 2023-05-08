@@ -55,7 +55,7 @@ export function FeedPost({image, title, resume, date, tags, url }: FeedPostProps
                     tags?.map((tag) => (
                         <Link
                             key={tag}
-                            href={`/tags/${tag}`}
+                            href={`/`}
                             variant="body4"
                             styleSheet={{
                                 color: theme.colors.neutral.x800,

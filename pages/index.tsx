@@ -8,8 +8,7 @@ export async function getStaticProps(){
 
     return {
         props: await withTemplateConfig({
-            posts,
-            exemplo: 'teste'
+            posts
         })
     }
 }

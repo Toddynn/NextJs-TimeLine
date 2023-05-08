@@ -1,4 +1,5 @@
 import Box from "@src/components/Box/Box";
+import Link from "@src/components/Link/Link";
 import Text from "@src/components/Text/Text";
 import { useTheme } from "@src/theme/ThemeProvider";
 
@@ -20,9 +21,7 @@ export default function Footer() {
         textAlign: 'center',
       }}
     >
-      <Text variant="body2">
-        Toddys ❤️ Arthur 
-      </Text>
+      <Link styleSheet={{color:'white', textDecoration:'none', fontSize:'16px'}} href={`/sobre`}>Sobre mim</Link>
     </Box>
   )
 }
