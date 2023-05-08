@@ -40,10 +40,10 @@ Feed.Header = () => {
   return (
     <Box styleSheet={{borderBottom: `1px solid ${theme.colors.neutral.x200}`,paddingBottom: '24px',marginBottom: '24px',}}>
 
-      <Box styleSheet={{flexDirection:{sm:'row', xs:'col'},justifyContent: 'space-between', gap:'16px',marginBottom:'16px'}}>
+      <Box styleSheet={{flexDirection:{sm:'row', xs:'col'},justifyContent: 'space-between', gap:'16px',marginBottom:'16px', alignItems:'center'}}>
 
         <Image styleSheet={{ width: { xs: '100px', md: '128px' }, height: { xs: '100px', md: '128px' }, borderRadius: '100%', margin:{sm:'0', xs:'0 auto'}}} 
-        src={templateConfig?.personal.avatar} alt="Imagem de perfil do Mario Souto"></Image>
+        src={templateConfig?.personal.avatar} alt="Imagem de perfil do Toddys"></Image>
 
         <Box styleSheet={{ justifyContent: 'space-between',}}>
           <Box styleSheet={{flex: 1, justifyContent: 'center', gap:'10px'}}>
@@ -58,20 +58,26 @@ Feed.Header = () => {
         {templateConfig?.personal.name}
       </Text>
       
-      <Box styleSheet={{flexDirection: 'row', gap: '4px'}}>
-        {
-          Object.keys(templateConfig?.personal.socialNetworks).map((key:any) => {
-            const socialNetwork = templateConfig?.personal.socialNetworks[key];
-            if(socialNetwork){
-              return (
-                <Link key={key} href={templateConfig?.personal.socialNetworks [key]} target='_blank'>
-                  <Icon name={key} />
-                </Link>
-              )
-            }
-            return null;
-          })
-        }
+      <Box styleSheet={{flexDirection: 'row-reverse', gap: '4px', alignItems: 'center', justifyContent:'space-between'}}>
+        <Box styleSheet={{flexDirection: 'row', gap: '4px', alignItems: 'center', justifyContent: 'start'}}>
+          {
+            Object.keys(templateConfig?.personal.socialNetworks).map((key:any) => {
+              const socialNetwork = templateConfig?.personal.socialNetworks[key];
+              if(socialNetwork){
+                return (
+                  <Link key={key} href={templateConfig?.personal.socialNetworks [key]} target='_blank'>
+                    <Icon name={key} />
+                  </Link>
+                )
+              }
+              return null;
+            })
+          }
+        </Box>
+        
+        <Text tag="h1" variant="heading4">
+          {templateConfig?.site.description}
+        </Text>
       </Box>
       
     </Box>

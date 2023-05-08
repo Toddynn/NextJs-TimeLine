@@ -3,11 +3,13 @@ import Button from "@src/components/Button/Button";
 import Icon from "@src/components/Icon/Icon";
 import Image from "@src/components/Image/Image";
 import Text from "@src/components/Text/Text";
+import { TemplateConfigProvider, useTemplateConfig } from "@src/services/template/TemplateConfigContext";
 import theme from "@src/theme/theme";
 import { useTheme } from "@src/theme/ThemeProvider";
 
 export default function Menu() {
   const theme = useTheme();
+  const templateConfig = useTemplateConfig();
   const baseSize = '40px';
   return (
     <Box
@@ -37,7 +39,7 @@ export default function Menu() {
           },
         }}
       >
-        <img src="https://github.com/Toddynn.png" width={40} alt="oi" />
+        <img src={templateConfig.personal.avatar} width={40} alt="oi" />
       </Button.Base>
 
       <Button.Base

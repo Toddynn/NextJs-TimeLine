@@ -13,6 +13,7 @@ export interface iTemplateConfig{
             youtube?: string,
             github?: string,
             linkedin?: string,
+            instagram?: string,
         }
     }
 }

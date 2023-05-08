@@ -1,9 +1,11 @@
 import Box from "@src/components/Box/Box";
 import Link from "@src/components/Link/Link";
 import Text from "@src/components/Text/Text";
+import { useTemplateConfig } from "@src/services/template/TemplateConfigContext";
 import { useTheme } from "@src/theme/ThemeProvider";
 
 export default function Footer() {
+  const templateConfig = useTemplateConfig();
   const theme = useTheme();
   return (
     <Box
@@ -21,7 +23,9 @@ export default function Footer() {
         textAlign: 'center',
       }}
     >
-      <Link styleSheet={{color:'white', textDecoration:'none', fontSize:'16px'}} href={`/sobre`}>Sobre mim</Link>
+      <Link styleSheet={{color:'white'}} href={templateConfig.personal.socialNetworks.instagram}>
+        <Text styleSheet={{hover:{color:theme.colors.primary.x200}}} >@Vinicius.toddys</Text>
+      </Link>
     </Box>
   )
 }

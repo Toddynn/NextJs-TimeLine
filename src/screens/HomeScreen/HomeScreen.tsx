@@ -12,7 +12,6 @@ interface HomeScreenProps {
 }
 
 export function HomeScreen(props: any) {
-  console.log(props);
 
   const theme = useTheme();
 

@@ -30,11 +30,11 @@ export function FeedPost({image, title, resume, date, tags, url }: FeedPostProps
                 {postDate}
             </Text>
             {/* Title, Excerpt */}
-            <Link href={url} variant="body1" styleSheet={{marginBottom: '8px',display: 'inline',}}colorVariantEnabled={false}>
+            <Link href={url} variant="body1" styleSheet={{marginBottom: '8px',display: 'inline'}}colorVariantEnabled={false}>
                 <Box tag="span"
                     styleSheet={{
                         display: 'inline',
-                        padding: '2px',
+                        padding: '4px',
                         borderRadius: "4px",
                         color: theme.colors.neutral.x800,
                         backgroundColor: theme.colors.neutral.x200,
