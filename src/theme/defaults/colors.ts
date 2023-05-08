@@ -63,9 +63,9 @@ export const colors = {
   },
   primary: {
     x050: '#FFE8D9',
-    x100: '#FFD0B5',
+    x100: '#D68AFF77',
     x200: '#D68AFF',
-    x300: '#FFD0B5',
+    x300: '#D68AFF77',
     x400: '#D68AFF',
     x500: '#9631CC',
     x600: '#5E1F80',

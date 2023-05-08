@@ -16,7 +16,7 @@ export function HomeScreen(props: any) {
   const theme = useTheme();
 
   return (
-    <Box tag="main" styleSheet={{backgroundColor: theme.colors.neutral.x000, flex: 1, alignItems: 'center',}}>
+    <Box tag="main" styleSheet={{backgroundColor: theme.colors.primary.x100, flex: 1, alignItems: 'center',}}>
       <Background />
       <Menu />
       <Feed>
