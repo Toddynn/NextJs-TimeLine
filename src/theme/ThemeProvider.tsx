@@ -5,6 +5,7 @@ import {
 } from 'styled-components';
 import theme, { Theme } from "./theme";
 
+
 export function useTheme(): Theme {
   return useThemeStyled() as unknown as any;
 }

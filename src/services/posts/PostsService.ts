@@ -18,8 +18,8 @@ export interface iPost {
 
 export default function PostsService() {
     return {
-        async getAll():Promise<iPost[]>{
-            const PATH_POSTS = path.resolve('.', '_data', 'posts');
+        async getAllNext():Promise<iPost[]>{
+            const PATH_POSTS = path.resolve('.', '_data', 'posts', 'Cursos', 'Next');
             const pathFiles = await fs.readdir(PATH_POSTS, { encoding: 'utf-8' });
             const postsPromise = pathFiles.map(async(item) => {
                 const FILE_PATH = path.join(PATH_POSTS, item);
@@ -43,8 +43,58 @@ export default function PostsService() {
                 
             })
 
+            function compare(a, b) {
+                console.log(a, b)
+                if(a.metaData.date < b.metaData.date){
+                    return -1;
+                }
+                if(a.metaData.date > b.metaData.date){
+                    return 1;
+                }
+                return 0;
+            };
+
             const posts = Promise.all(postsPromise);
-            return posts
+            return (await posts).sort(compare).reverse();
+        },
+        async getAllUX():Promise<iPost[]>{
+            const PATH_POSTS = path.resolve('.', '_data', 'posts', 'Cursos', 'UI_UX');
+            const pathFiles = await fs.readdir(PATH_POSTS, { encoding: 'utf-8' });
+            const postsPromise = pathFiles.map(async(item) => {
+                const FILE_PATH = path.join(PATH_POSTS, item);
+                const postsFile = await fs.readFile(FILE_PATH, { encoding: 'utf-8'});
+
+                const {data, content} = matter(postsFile);
+
+                const post: iPost = {
+                    metaData:{
+                        date: new Date(data.date).toISOString(),
+                        slug: item.replace('.md', ''),
+                        url: data.url,
+                        resume: data.resume,
+                        tags: data.tags
+                    },
+                    image: data.image || '',
+                    title: data.title,
+                    content,
+                }
+                return post
+                
+            })
+
+            function compare(a, b) {
+                console.log(a, b)
+                if(a.metaData.date < b.metaData.date){
+                    return -1;
+                }
+                if(a.metaData.date > b.metaData.date){
+                    return 1;
+                }
+                return 0;
+            };
+
+            const posts = Promise.all(postsPromise);
+            return (await posts).sort(compare).reverse();
         }
     }
 }

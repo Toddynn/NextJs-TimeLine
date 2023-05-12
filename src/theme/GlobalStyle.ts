@@ -2,6 +2,9 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   // [NextJS Reset]
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
   html {
     display: flex;
     min-height: 100%;

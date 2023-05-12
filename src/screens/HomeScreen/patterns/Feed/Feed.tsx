@@ -1,14 +1,16 @@
-import React from 'react';
 import Box from "@src/components/Box/Box";
-import Text from "@src/components/Text/Text";
+import Button from "@src/components/Button/Button";
 import Icon from "@src/components/Icon/Icon";
 import Image from "@src/components/Image/Image";
 import Link from "@src/components/Link/Link";
-import Button from "@src/components/Button/Button";
-import { useTheme } from "@src/theme/ThemeProvider";
-import { useTemplateConfig } from '@src/services/template/TemplateConfigContext';
+import Text from "@src/components/Text/Text";
 import { iPost } from '@src/services/posts/PostsService';
+import { useTemplateConfig } from '@src/services/template/TemplateConfigContext';
+import { useTheme } from "@src/theme/ThemeProvider";
+import React, { useState } from 'react';
+import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi';
 import { FeedPost } from './patterns/FeedPost';
+import ButtonBase from "@src/components/Button/ButtonBase";
 
 interface FeedProps {
   children: React.ReactNode;
@@ -75,7 +77,7 @@ Feed.Header = () => {
           }
         </Box>
         
-        <Text tag="h1" variant="heading4">
+        <Text tag="h1" styleSheet={{color: 'black', opacity:0.8}} variant="heading4">
           {templateConfig?.site.description}
         </Text>
       </Box>
@@ -85,24 +87,74 @@ Feed.Header = () => {
 }
 
 interface FeedPostsProps {
-  posts: iPost[];
+  postsNext: iPost[];
+  postsUX: iPost[];
 }
 
-Feed.Posts = ({posts}: FeedPostsProps) => {
+Feed.Posts = ({postsNext, postsUX}: FeedPostsProps) => {
+  const [categoria, setCategoria] = useState('Next');
+
+  const handleSetCategoryUX = () => {
+    setCategoria('UX')
+  }
+  const handleSetCategoryNext = () => {
+    setCategoria('Next')
+  }
+
+  const theme = useTheme();
   return (
     <Box>
-      <Text variant="heading3"> Ultimas Atualizações </Text>
+      <Box styleSheet={{display:'flex', flexDirection:'row', justifyContent:'space-between', alignItems: 'center'}}>
+          <Text variant='heading3'>Ultimas Atualizações</Text>
+          <Box styleSheet={{display:'flex', flexDirection:'row', justifyContent:'space-between', gap:'10px', alignItems: 'center'}}>
+            <ButtonBase styleSheet={{backgroundColor: theme.colors.primary.x500,
+    hover: {
+      backgroundColor: theme.colors.primary.x400,
+    },
+    focus: {
+      backgroundColor: theme.colors.primary.x600,
+    }, borderRadius:'25px'}}>
+              <HiArrowSmLeft size={40} onClick={handleSetCategoryNext}></HiArrowSmLeft>
+            </ButtonBase>
+            <ButtonBase>
+              <HiArrowSmRight size={40} onClick={handleSetCategoryUX}></HiArrowSmRight>
+            </ButtonBase>
+          </Box>
+      </Box>
       {
-        posts.map((item)=>(
-          <FeedPost key={item.metaData.slug} 
-            date={item.metaData.date} 
-            resume={item.metaData.resume}
-            tags={item.metaData.tags}
-            title={item.title}
-            url={item.metaData.url}
-            image={item.image}
-          />
-        ))
+        categoria.match('Next') ?
+          <>
+            {
+              postsNext?.map((item)=>(
+                <FeedPost key={item.metaData.slug} 
+                  date={item.metaData.date} 
+                  resume={item.metaData.resume}
+                  tags={item.metaData.tags}
+                  title={item.title}
+                  url={item.metaData.url}
+                  image={item.image}
+                />
+              ))
+            }
+          </>
+      :
+        categoria.match('UX') ?
+          <>
+            {
+              postsUX?.map((item)=>(
+                <FeedPost key={item.metaData.slug} 
+                  date={item.metaData.date} 
+                  resume={item.metaData.resume}
+                  tags={item.metaData.tags}
+                  title={item.title}
+                  url={item.metaData.url}
+                  image={item.image}
+                />
+              ))
+            }
+          </>
+      :
+        null
       }
     </Box>
   )

@@ -8,7 +8,8 @@ import TemplatePageHOC from "@src/services/template/TemplatePageHOC";
 import type { iPost } from "@src/services/posts/PostsService";
 
 interface HomeScreenProps {
-  posts: iPost[]
+  postsNext: iPost[],
+  postsUX: iPost[],
 }
 
 export function HomeScreen(props: any) {
@@ -21,7 +22,7 @@ export function HomeScreen(props: any) {
       <Menu />
       <Feed>
         <Feed.Header />
-        <Feed.Posts posts={props.posts}></Feed.Posts>
+        <Feed.Posts postsNext={props.postsNext} postsUX={props.postsUX}></Feed.Posts>
       </Feed>
       <Footer />
     </Box>

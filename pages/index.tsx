@@ -4,11 +4,13 @@ import { withTemplateConfig } from '@src/services/template/TemplateConfig';
 
 export async function getStaticProps(){
     
-    const posts = await PostsService().getAll();
+    const postsNext = await PostsService().getAllNext();
+    const postsUX = await PostsService().getAllUX();
 
     return {
         props: await withTemplateConfig({
-            posts
+            postsNext,
+            postsUX
         })
     }
 }
